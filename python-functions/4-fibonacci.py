@@ -1,4 +1,4 @@
-n = int(input("How many terms? "))
+n = int(input())
 
 # first two terms
 n1 = 0
