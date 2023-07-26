@@ -1,0 +1,1 @@
+This priject centers on the importation of modules into python scripts and how to use imported functions, how to create modules and also how to use certain built-in functions.
