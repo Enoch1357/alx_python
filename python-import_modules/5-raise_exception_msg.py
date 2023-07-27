@@ -10,4 +10,4 @@ def raise_exception_msg(message=""):
     except NameError:
         print("C is fun")
     finally:
-        return(l1)
+        return(l1) 
