@@ -1,6 +1,6 @@
 #! /usr/bin/python3
 __name__ == "__main__"
-string_input = str(input())
+string_input = input("")
 arguments = string_input.split(" ")
 no_of_arguments = len(arguments)
 counter = 1
