@@ -8,6 +8,6 @@ def raise_exception_msg(message=""):
         del l[2]
         print(l1)
     except NameError:
-        print("C is fun")
+        print(message)
     finally:
         return(l1) 
