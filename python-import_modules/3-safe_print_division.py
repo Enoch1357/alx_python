@@ -1,13 +1,13 @@
 #! /usr/bin/python3
+__name__ = "__main__"
 def safe_print_division(a, b):
     try:
         quotient = int(a) / int(b)
-        result = quotient
-        print("Inside result: {}".format(result))
-        print("{:d} / {:d} = {}".format(a, b, result))
-    except ZeroDivisionError:
-        result = "None"
-        print("Inside result: {}".format(result))
-        print("{:d} / {:d} = {}".format(a, b, result))
+        print("Inside result: {}".format(quotient))
+        
+    except ZeroDivisionError: 
+        quotient = "None"
+        print("Inside result: {}".format(quotient))
+    
     finally:
-        return ("\n")
+        return (quotient)
