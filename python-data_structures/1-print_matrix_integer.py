@@ -2,7 +2,7 @@
 def print_matrix_integer(matrix=""):
     for i in matrix:
         if matrix == [[]]:
-            print(" ")
+            print("")
         without_last_member = i[:-1]
         for k in without_last_member:
             print("{:d}".format(k), end=" ")
