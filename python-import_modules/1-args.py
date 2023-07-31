@@ -19,4 +19,4 @@ else:
             print("{}: {}".format(counter, argument), end="\n")
             nth = arguments[counter - 1]
             argument = nth
-            counter += 1
+            counter += 1 
