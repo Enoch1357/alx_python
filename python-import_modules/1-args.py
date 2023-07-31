@@ -1,6 +1,7 @@
 #! /usr/bin/python3
 __name__ == "__main__"
-string_input = input("")
+import sys
+string_input = str(sys.argv[1])
 arguments = string_input.split(" ")
 no_of_arguments = len(arguments)
 counter = 1
