@@ -7,7 +7,5 @@ def common_elements(set_1, set_2):
             for j in set_2:
                 if i == j:
                     list_common.append(j)
-                    counter += 1
-    else:
-        list_common = []            
+        counter += 1            
     return sorted(set(list_common))
