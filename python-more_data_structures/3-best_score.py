@@ -4,4 +4,4 @@ def best_score(a_dictionary):
         max_value_key = max(a_dictionary, key=a_dictionary.get)
     except AttributeError:
         max_value_key = None
-    return max_value_key 
+    return max_value_key
