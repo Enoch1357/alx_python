@@ -1,7 +1,13 @@
 #! /usr/bin/python3
 def common_elements(set_1, set_2):
-    for i in set_1:
-        for j in set_2:
-            if i == j:
-                list_common = ([j])
-    return list_common
+    counter = 0
+    list_common = []
+    while counter <= len(set_1):
+        for i in set_1:
+            for j in set_2:
+                if i == j:
+                    list_common.append(j)
+                    counter += 1
+    else:
+        list_common = []            
+    return sorted(set(list_common))
