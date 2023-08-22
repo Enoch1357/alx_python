@@ -1,4 +1,7 @@
 #! /usr/bin/pythonn3
+"""
+This module creates a class 'Square' that defines a square with various methods.
+"""
 class Square:
     """
     This class defines a square.
