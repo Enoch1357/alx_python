@@ -47,7 +47,7 @@ class Square:
         This method prints in stdout the square with the character '#', and an empty line if 'size' is equal to 0. 
         """
         if self.size == 0:
-            print("\n")
+            print(end="\n")
         else:
             counter = 0
             while counter < self.size:
