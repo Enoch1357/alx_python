@@ -1,5 +1,4 @@
 #! /usr/bin/python3
-__name__ == "__main__"
 """
 This module contains an class that raises an exception.
 """
