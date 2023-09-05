@@ -13,10 +13,10 @@ class Square(Rectangle):
         
         self.__size = size
         if type(self.__size) != int:
-            raise TypeError("width must be an integer")
+            raise TypeError("size must be an integer")
         
         elif self.__size <= 0:
-            raise ValueError("width must be greater than 0")
+            raise ValueError("size must be greater than 0")
 
     def area(self):
         """This method computes the area of a square given it's size attribute"""
