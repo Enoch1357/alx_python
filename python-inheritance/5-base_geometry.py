@@ -10,7 +10,7 @@ class AMetaClass(type):
         attributes = super().__dir__()
         return [attribute for attribute in super().__dir__() if attribute != '__init_subclass__']
 
-class BaseGeometry:
+class BaseGeometry(metaclass=AMetaClass):
     """
     This class contains attributes and methods that are supposed to relate to geometry somehow.
     """
