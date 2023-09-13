@@ -104,7 +104,11 @@ class Rectangle(Base):
     def display(self):
         """This method prints in stdout the Rectangle instance with the character '#'."""
         counter = 0
+        for k in range(self.__y):
+            print(end="\n")
         while counter < self.__height:
+            for j in range(self.__x):
+                print(" ", end="")
             for i in range(self.__width):
                 print("{}".format('#'), end="")
             print(end="\n")
@@ -113,3 +117,16 @@ class Rectangle(Base):
     def __str__(self):
         """This methods overrides the string representation of the instance object of the class Rectangle."""
         return ("[Rectangle] ({}) {}/{} - {}/{}".format(self.id, self.__x, self.__y, self.__width, self.__height))
+    
+    def update(self, *args):
+        """This method simply assigns an argument to each atttibute"""
+        if len(args) >= 1:
+            self.id = args[0]
+        if len(args) >= 2:
+            self.__width = args[1]
+        if len(args) >= 3:
+            self.__height = args[2]
+        if len(args) >= 4:
+            self.__x = args[3]
+        if len(args) >= 5:
+            self.__y = args[4]
