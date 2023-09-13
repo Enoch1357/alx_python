@@ -66,9 +66,28 @@ class Rectangle(Base):
         """This method instantiates the class Rectangle with the private attributes; 'width','height','x','y'."""
 
         self.__width = width
+        if type(width) != int:
+            raise TypeError("{} must be an integer".format('width'))
+        elif width <= 0:
+            raise ValueError("width must be > 0")
+        
         self.__height = height
+        if type(height) != int:
+            raise TypeError("{} must be an integer".format('height'))
+        elif height <= 0:
+            raise ValueError("height must be > 0")
+        
         self.__x = x
+        if type(x) != int:
+            raise TypeError("{} must be an integer".format('x'))
+        elif x < 0:
+            raise ValueError("x must be >= 0")
+        
         self.__y = y
+        if type(y) != int:
+            raise TypeError("{} must be an integer".format('y'))
+        elif y < 0:
+            raise ValueError("y must be >= 0")
         
         __nb_objects = 0
         if id is not None:
