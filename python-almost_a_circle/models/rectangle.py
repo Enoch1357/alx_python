@@ -95,7 +95,21 @@ class Rectangle(Base):
         else:
             __nb_objects += 1
             self.id = __nb_objects
-        
-        
 
-        
+    def area(self):
+        """This method returns the area value of the rectangle instance.""" 
+        self.area = self.__width * self.__height
+        return self.area
+
+    def display(self):
+        """This method prints in stdout the Rectangle instance with the character '#'."""
+        counter = 0
+        while counter < self.__height:
+            for i in range(self.__width):
+                print("{}".format('#'), end="")
+            print(end="\n")
+            counter += 1
+
+    def __str__(self):
+        """This methods overrides the string representation of the instance object of the class Rectangle."""
+        return ("[Rectangle] ({}) {}/{} - {}/{}".format(self.id, self.__x, self.__y, self.__width, self.__height))
