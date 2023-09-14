@@ -65,6 +65,7 @@ class Rectangle(Base):
     def __init__(self, width, height, x=0, y=0, id=None):
         """This method instantiates the class Rectangle with the private attributes; 'width','height','x','y'."""
 
+        super().__init__(id)
         self.__width = width
         if type(width) != int:
             raise TypeError("{} must be an integer".format('width'))
@@ -89,12 +90,6 @@ class Rectangle(Base):
         elif y < 0:
             raise ValueError("y must be >= 0")
         
-        __nb_objects = 0
-        if id is not None:
-            self.id = int(id)
-        else:
-            __nb_objects += 1
-            self.id = __nb_objects
 
     def area(self):
         """This method returns the area value of the rectangle instance.""" 
