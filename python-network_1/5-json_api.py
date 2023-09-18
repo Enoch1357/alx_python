@@ -15,5 +15,5 @@ try:
         print("[{}] {}".format(user['id'], user['name']))
     elif user == {}:
         print('No result')
-except requests.exceptions.RequestException as e:
+except Exception as e:
     print("Not a valid JSON")
