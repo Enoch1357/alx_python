@@ -10,10 +10,9 @@ elif len(sys.argv) == 2:
     q = sys.argv[1]
 request = requests.post('http://0.0.0.0:5000/search_user', data={'q': q})
 user = request.json()
-try:
-    if user:
-        print("[{}] {}".format(user['id'], user['name']))
-    elif user == {}:
-        print('No result')
-except Exception as e:
+if user:
+    print("[{}] {}".format(user['id'], user['name']))
+elif user == {}:
+    print('No result')
+else:
     print("Not a valid JSON")
