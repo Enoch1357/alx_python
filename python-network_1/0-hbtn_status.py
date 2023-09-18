@@ -4,5 +4,6 @@ This module fetches the url 'https://alu-intranet.hbtn.io/status'.
 """
 import requests
 request = requests.get('https://alu-intranet.hbtn.io/status')
-print("type: {}".format(type(request.text)))
-print("content: {}".format(request.text))
+print("Body response:")
+print("    - type: {}".format(type(request.text)))
+print("    - content: {}".format(request.text))
