@@ -20,3 +20,6 @@ try:
 except ValueError:
     print("Not a valid JSON response")
 
+except KeyError:
+    print(None)
+
