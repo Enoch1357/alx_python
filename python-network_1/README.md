@@ -1,0 +1,1 @@
+This project is based on how to use python to issue and accept http requests and how to manipulate JSON as well.
