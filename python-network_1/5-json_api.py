@@ -16,4 +16,4 @@ try:
     elif user == {}:
         print('No result')
 except requests.exceptions.RequestException as e:
-    print(e)
+    print("Not a valid JSON")
