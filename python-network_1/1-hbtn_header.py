@@ -6,7 +6,8 @@ import requests
 import sys
 url = sys.argv[1]
 request = requests.get(url)
-if 'X-Request-Id' in 'headers':
+headers = request.headers
+if 'X-Request-Id' in headers:
     print(request.headers['X-Request-Id'])
 else:
     print(None)
