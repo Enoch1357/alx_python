@@ -6,4 +6,4 @@ import sys
 import requests
 def req_sender(url):
     request = requests. get(url)
-    print(request.headers[X-Request-Id])
+    print(request.headers['X-Request-Id'])
