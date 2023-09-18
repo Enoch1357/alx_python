@@ -7,4 +7,4 @@ import requests
 url = sys.argv[1]
 email = sys.argv[2]
 request = requests.post(url, data={'email': email})
-print("Your email is: {}".format(email))
+print("Email: {}".format(email))
