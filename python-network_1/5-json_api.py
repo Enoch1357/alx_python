@@ -9,10 +9,13 @@ if len(sys.argv) == 1:
 elif len(sys.argv) == 2:
     q = sys.argv[1]
 request = requests.post('http://0.0.0.0:5000/search_user', data={'q': q})
-user = request.json()
-if user:
-    print("[{}] {}".format(user['id'], user['name']))
-elif user == {}:
-    print('No result')
-else:
-    print("Not a valid JSON")
+response = request.json()
+user = response[0]
+try:
+    if user:
+        print("[{}] {}".format(user['id'], user['name']))
+    else:
+        print('No result')
+
+except ValueError:
+        print("Not a valid JSON")
