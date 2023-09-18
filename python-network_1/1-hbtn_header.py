@@ -5,5 +5,5 @@ This module takes in a URL, sends a request to the URL and displays the value of
 import sys
 import requests
 def req_sender(url):
-    request = requests. get(url)
+    request = requests.get(url)
     print(request.headers['X-Request-Id'])
