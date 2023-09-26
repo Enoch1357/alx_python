@@ -12,7 +12,7 @@ database_name = sys.argv[3]
 state_name = sys.argv[4]
 query = "SELECT * FROM states WHERE BINARY name LIKE %s ORDER BY states.id ASC"
 db = MySQLdb.connect(host="localhost", user=username, 
-                        passwd=password, db=database_name)
+                      passwd=password, db=database_name)
 cursor = db.cursor()
 cursor.execute(query, ["{}".format(state_name)])
 states = cursor.fetchall()
