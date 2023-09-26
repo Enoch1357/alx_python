@@ -9,9 +9,10 @@ username = sys.argv[1]
 password = sys. argv[2]
 database_name = sys.argv[3]
 state_name = sys.argv[4]
+query = "SELECT * FROM states WHERE name ={}".format(state_name)
 database = MySQLdb.connect(host="localhost", user=username, passwd=password, db=database_name)
 cursor = database.cursor()
-cursor.execute(f"SELECT * FROM states WHERE name={state_name}")
+cursor.execute(query)
 states = cursor.fetchall()
 for state in states:
     print(state)
