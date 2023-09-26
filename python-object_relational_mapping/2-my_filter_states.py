@@ -8,7 +8,7 @@ __name__ == "__main__"
 username = sys.argv[1]
 password = sys. argv[2]
 database_name = sys.argv[3]
-state_name - sys.argv[4]
+state_name = sys.argv[4]
 database = MySQLdb.connect(host="localhost", user=username, passwd=password, db=database_name)
 cursor = database.cursor()
 cursor.execute("SELECT * FROM states WHERE name={}".format(state_name))
