@@ -13,7 +13,8 @@ engine = create_engine(f"mysql+mysqldb://{username}:{password}\
 Base.metadata.create_all(engine)
 Session = sessionmaker(bind=engine)
 session = Session()
-states = session.query(State).order_by(State.id).all()
+cursor = session.query(State).order_by(State.id).all()
+states = cursor.fetchall()
 for state in states:
     print(f"{state.id}: {state.name}")
 session.close()
