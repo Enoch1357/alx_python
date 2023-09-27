@@ -8,7 +8,8 @@ import sys
 username = sys.argv[1]
 password = sys.argv[2]
 database_name = sys.argv[3]
-engine = create_engine(f"mysql+mysqldb://{username}:{password}@localhost:3306/{database_name}")
+engine = create_engine(f"mysql+mysqldb://{username}:{password}\
+                       @localhost:3306/{database_name}")
 Base.metadata.create_all(engine)
 Session = sessionmaker(bind=engine)
 session = Session()
