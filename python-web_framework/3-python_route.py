@@ -2,7 +2,7 @@
 """
 This module starts a Flask web application
 """
-from flask import Flask
+from flask import Flask, render_template
 
 app = Flask(__name__)
 
@@ -16,13 +16,16 @@ def hbnb():
 
 @app.route('/c/<text>', strict_slashes=False)
 def c(text):
+    # Replace underscores with spaces in the text variable
     text = text.replace('_', ' ')
     return 'C {}'.format(text)
 
 @app.route('/python/<text>', strict_slashes=False)
 def python(text="is_cool"):
+    # Replace underscores with spaces in the text variable
     text = text.replace('_', ' ')
     return 'Python {}'.format(text)
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)
+
