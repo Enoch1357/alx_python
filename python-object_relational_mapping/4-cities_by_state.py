@@ -4,7 +4,7 @@ This module lists all cities from the database 'hbtn_0e_4_usa'
 """
 import MySQLdb
 import sys
-__name__ =="__main__"
+__name__ == "__main__"
 username = sys.argv[1]
 password = sys.argv[2]
 database_name = sys.argv[3]
