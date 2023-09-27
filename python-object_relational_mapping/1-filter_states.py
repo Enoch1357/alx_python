@@ -12,7 +12,8 @@ database_name = sys.argv[3]
 database = MySQLdb.connect(host="localhost", user=username,
                            passwd=password, db=database_name)
 cursor = database.cursor()
-query = "SELECT * FROM states WHERE BINARY name LIKE 'N%' ORDER BY states.id ASC"
+query = "SELECT * FROM states \
+        WHERE BINARY name LIKE 'N%' ORDER BY states.id ASC"
 cursor.execute(query)
 states = cursor.fetchall()
 for state in states:
