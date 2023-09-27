@@ -16,7 +16,7 @@ db = MySQLdb.connect(host="localhost", user=username,
 cursor = db.cursor()
 query = "SELECT cities.name FROM cities \
         JOIN states ON cities.state_id = states.id \
-        WHERE states.name = %s ORDER BY cities.id ASC" 
+        WHERE states.name = %s ORDER BY cities.id ASC"
 cursor.execute(query, ["{}".format(state_name)])
 cities = cursor.fetchall()
 result = ', '.join(item[0] for item in cities)
