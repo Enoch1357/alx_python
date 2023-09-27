@@ -11,7 +11,9 @@ database_name = sys.argv[3]
 db = MySQLdb.connect(host="localhost", user=username,
                      passwd=password, db=database_name)
 cursor = db.cursor()
-query = "SELECT * FROM cities ORDER BY cities.id ASC"
+query = "SELECT cities.id, cities.name, states.name \
+        FROM cities JOIN states ON cities.state_id = states.id \
+        ORDER BY cities.id ASC"
 cursor.execute(query)
 cities = cursor.fetchall()
 for city in cities:
