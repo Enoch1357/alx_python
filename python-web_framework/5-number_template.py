@@ -16,11 +16,13 @@ def hbnb():
 
 @app.route('/c/<text>', strict_slashes=False)
 def c(text):
+    # Replace underscores with spaces in the text variable
     text = text.replace('_', ' ')
     return 'C {}'.format(text)
 
 @app.route('/python/<text>', strict_slashes=False)
 def python(text="is_cool"):
+    # Replace underscores with spaces in the text variable
     text = text.replace('_', ' ')
     return 'Python {}'.format(text)
 
@@ -30,7 +32,15 @@ def is_number(n):
 
 @app.route('/number_template/<int:n>', strict_slashes=False)
 def number_template(n):
-    return render_template('number_template.html', n=n)
+    return render_template('5-number.html', n=n)
+
+@app.route('/number_odd_or_even/<int:n>', strict_slashes=False)
+def number_odd_or_even(n):
+    if n % 2 == 0:
+        result = '{} is even'.format(n)
+    else:
+        result = '{} is odd'.format(n)
+    return render_template('6-number_odd_or_even.html', result=result)
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)
