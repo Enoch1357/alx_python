@@ -19,6 +19,7 @@ query = "SELECT cities.name FROM cities \
         WHERE states.name = %s ORDER BY cities.id ASC" 
 cursor.execute(query, ["{}".format(state_name)])
 cities = cursor.fetchall()
-print(cities)
+result = ', '.join(item[0] for item in cities)
+print(result)
 cursor.close()
 db.close()
