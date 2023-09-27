@@ -14,12 +14,11 @@ state_name = sys.argv[4]
 db = MySQLdb.connect(host="localhost", user=username,
                      passwd=password, db=database_name)
 cursor = db.cursor()
-query = "SELECT name FROM cities \
+query = "SELECT cities.name FROM cities \
         JOIN states ON cities.state_id = states.id \
         WHERE states.name = %s ORDER BY cities.id ASC" 
 cursor.execute(query, ["{}".format(state_name)])
 cities = cursor.fetchall()
-for city in cities:
-    print(city)
+print(cities)
 cursor.close()
 db.close()
