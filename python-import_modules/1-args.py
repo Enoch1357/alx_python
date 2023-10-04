@@ -10,7 +10,7 @@ def main():
     print("argument" if num_arguments == 1 else "arguments", end='')
     print(":" if num_arguments > 0 else ".")
 
-    counter = 0
+    counter = 1
     for arg in arguments:
         print(f"{counter}: {arg}")
         counter += 1
