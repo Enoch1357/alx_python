@@ -1,22 +1,26 @@
-#! /usr/bin/python3
-__name__ == "__main__"
+#! /usr/bin/pyhton3
+__name__ = "__main__"
 import sys
-string_input = str(sys.argv[1])
-arguments = string_input.split(" ")
-no_of_arguments = len(arguments)
-counter = 1
-if arguments == ['']:
-    print("{} arguments.".format(0), end="\n")
-elif no_of_arguments == 1:
-    print("{} argument:".format(no_of_arguments), end="\n")
-    for argument in arguments:
-        print("{}: {}".format(counter, argument), end="\n")
-else:
-    print("{} arguments:".format(no_of_arguments), end="\n")
-    for argument in arguments:
-        while counter <= no_of_arguments:
-            argument = arguments[counter -1]
-            print("{}: {}".format(counter, argument), end="\n")
-            nth = arguments[counter - 1]
-            argument = nth
-            counter += 1 
+
+def main():
+    arguments = sys.argv[1:]
+    num_arguments = len(arguments)
+
+    print(f"{num_arguments}", end=' ')
+    print("argument" if num_arguments == 1 else "arguments", end='')
+    print(":" if num_arguments > 0 else ".")
+
+    counter = 0
+    for arg in arguments:
+        print(f"{counter}: {arg}")
+        counter += 1
+
+                    #OR
+    # for i, arg in enumerate(arguments, start=1):
+    #     print(f"{i}: {arg}")
+
+                    #OR
+    # for counter in range(num_arguments):
+    #     print(f"{counter + 1}: {arguments[counter]}")
+
+main()
