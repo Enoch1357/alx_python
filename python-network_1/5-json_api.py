@@ -4,15 +4,20 @@ This module takes in a letter and sends a POST request to 'http://0.0.0.0:5000/s
 """
 import sys
 import requests
-if len(sys.argv) == 1:
+if len(sys.argv) < 2:
     q = ""
-elif len(sys.argv) == 2:
+else:
     q = sys.argv[1]
-request = requests.post('http://0.0.0.0:5000/search_user', data={'q': q})
-user = request.json()
-if user:
-    print("[{}] {}".format(user['id'], user['name']))
-elif user == {}:
-    print('No result')
-elif user != request.json():
+
+try:
+    request = requests.post('http://0.0.0.0:5000/search_user', data={'q': q})
+    request.raise_for_status()
+    json_response = request.json()
+
+    if json_response:
+        print("[{}] {}".format(json_response.get("id"), json_response.get("name")))
+    else:
+        print("No result")
+
+except requests.exceptions.RequestException as e:
     print("Not a valid JSON")
