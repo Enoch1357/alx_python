@@ -19,16 +19,12 @@ class Square:
         Setter method for the private attribute '__size' that also validates the value of '__size' by raising a TypeError exception with a message if the value of size is not an integer, as well as a ValueError if the value of '__size' is negative.
         """
         self.__size = value
-        try:
-            if value<0:
-                raise ValueError
-    
-        except TypeError:
-            print("size must be an integer")
 
-        except ValueError:
-            print("size must be >= 0")
-            
+        if type(size) != int:
+            raise TypeError("size must be an integer")
+
+        if size<0:
+                raise ValueError("size must be >= 0")
 
     def __init__(self, size=0):
         """
