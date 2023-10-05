@@ -4,8 +4,8 @@ This script accesses data from an API 'REST API',
 for a given employee ID, then returns information
 about his/her todo list progress.
 """
-import sys
 import requests
+import sys
 def getTodoInfo(employee_id):
     """
     This function takes in an integer parameter and 
@@ -20,11 +20,11 @@ def getTodoInfo(employee_id):
     request = requests.get(todos_url)
     tasks = request.json()
     total_tasks = len(tasks)
-    completed_tasks = sum(1 for task in tasks if task["completed"])
+    completed_tasks = sum(1 for task in tasks if task["completed"] == True)
     print(f"Employee {employee_data['name']} is done with tasks({completed_tasks}/{tasks}):")
     for task in tasks:
-        if task["completed"]:
-            print(f"\t{task['title']}")
+        if task["completed"] == True:
+            print(f"\t {task['title']}")
 
 if len(sys.argv) != 2:
     print("Usage error: python <script> <employee-id>")
