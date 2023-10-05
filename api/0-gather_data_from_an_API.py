@@ -1,4 +1,4 @@
-#! /usr/bin/python3
+#!/usr/bin/python3
 """
 This script accesses data from an API 'REST API',
 for a given employee ID, then returns information
@@ -29,5 +29,5 @@ def getTodoInfo(employee_id):
 if len(sys.argv) != 2:
     print("Usage error: python <script> <employee-id>")
 else:
-    employee_id = sys.argv[1]
+    employee_id = int(sys.argv[1])
     getTodoInfo(employee_id)
