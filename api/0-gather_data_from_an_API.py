@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#! /usr/bin/python3.4.3
 """
 This script accesses data from an API 'REST API',
 for a given employee ID, then returns information
@@ -20,11 +20,11 @@ def getTodoInfo(employee_id):
     request = requests.get(todos_url)
     tasks = request.json()
     total_tasks = len(tasks)
-    completed_tasks = sum(1 for task in tasks if task["completed"] == True)
-    print(f"Employee {employee_data['name']} is done with tasks({completed_tasks}/{tasks}):")
+    completed_tasks = sum(1 for task in tasks if task.get('completed') == True)
+    print(f"Employee {employee_data.get('name')} is done with tasks({completed_tasks}/{tasks}):")
     for task in tasks:
-        if task["completed"] == True:
-            print(f"\t {task['title']}")
+        if task.get('completed') == True:
+            print(f"\t {task.get('title')}")
 
 if len(sys.argv) != 2:
     print("Usage error: python <script> <employee-id>")
