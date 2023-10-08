@@ -32,7 +32,7 @@ def getTodoInfo(employee_id):
     todos = requests.get(employee_todo_url).json()
     for task in todos:
         if task['completed'] == True:
-            print("\t {}\n".format(task.get('title')))
+            print("\t {}".format(task.get('title')))
 
 if len(sys.argv) != 2:
     print("Usage error: python <script> <employee-id>")
