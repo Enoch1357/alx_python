@@ -5,10 +5,30 @@ for a given employee ID, then returns information
 about his/her todo list progress.
 The exports the info into a csv file.
 """
-import csv
+import json
 import requests
 import sys
 __name__ = '__main__'
+
+class MyEncoder(json.JSONEncoder):
+    def encode(self, obj):
+        def json_encode_string(s):
+            return f'"{s}"'
+
+        def json_encode_dict(d):
+            pairs = [f'"{key}": {json_encode(val)}' for key, val in d.items()]
+            return "{" + ", ".join(pairs) + "}"
+
+        def json_encode(val):
+            if isinstance(val, str):
+                return json_encode_string(val)
+            elif isinstance(val, dict):
+                return json_encode_dict(val)
+            else:
+                return json.JSONEncoder().encode(val)
+
+        return json_encode(obj)
+
 def getTodoInfo(employee_id):
     """
     This function takes in an integer parameter and 
@@ -30,21 +50,21 @@ def getTodoInfo(employee_id):
 
     employee_todo_url = "https://jsonplaceholder.typicode.com/users/{}/todos".format(employee_id)
     todos = requests.get(employee_todo_url).json()
-
-    # Create a CSV file
-    csv_filename = "{}.csv".format(employee_id)
-    with open(csv_filename, 'w', newline='') as csvfile:
-        fieldnames = ["USER_ID", "USERNAME", "TASK_COMPLETED_STATUS", "TASK_TITLE"]
-        writer = csv.DictWriter(csvfile, fieldnames=fieldnames, quoting=csv.QUOTE_ALL)
-
-        for task in todos:
-            writer.writerow({
-                "USER_ID": employee_id,
-                "USERNAME": name,
-                "TASK_COMPLETED_STATUS": task['completed'],
-                "TASK_TITLE": task['title']
-            })
-
+    todo_data = {
+        employee_id: [
+            {
+                "task": task['title'],
+                "completed": task['completed'],
+                "username": name
+            }
+            for task in todos
+        ]
+    }
+    
+    #Creating a JSON file
+    json_filename = "{}.json".format(employee_id)
+    with open(json_filename, 'w') as jsonfile:
+        json.dump(todo_data, jsonfile, cls=MyEncoder)
 
 if len(sys.argv) != 2:
     print("Usage error: python <script> <employee-id>")
