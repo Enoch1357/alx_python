@@ -33,7 +33,7 @@ def getTodoInfo(employee_id):
     for i in request:
         if i['id'] == employee_id:
             name = i['name']
-    print("Employee {} is done with tasks({}/{}):".format(name, todos_done, todos_count))
+    print("Employee {} is done with tasks({}/{}):".format(employee_data.get('name'), todos_done, todos_count))
     for task in tasks:
         if task.get('completed') == True:
             print(f"\t {task.get('title')}")
