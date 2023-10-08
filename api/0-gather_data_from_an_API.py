@@ -19,8 +19,13 @@ def getTodoInfo(employee_id):
     todos_url = f'https://jsonplaceholder.typicode.com/users/{employee_id}/todos'
     request = requests.get(todos_url)
     tasks = request.json()
-    total_tasks = len(tasks)
-    completed_tasks = sum(1 for task in tasks if task.get('completed') == True)
+    total_tasks = 0
+    completed_tasks = 0
+    for i in tasks:
+        if i['userId'] == employee_id:
+            total_tasks += 1
+        if (i['completed'] and i['userId'] == employee_id):
+            completed_tasks += 1
     print(f"Employee {employee_data.get('name')} is done with tasks({completed_tasks}/{tasks}):")
     for task in tasks:
         if task.get('completed') == True:
