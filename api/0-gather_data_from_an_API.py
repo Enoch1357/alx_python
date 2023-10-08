@@ -30,7 +30,7 @@ def getTodoInfo(employee_id):
     for i in resp:
         if i['id'] == id:
             name = i['name']
-    employee_todo_url = "https://jsonplaceholder.typicode.com/{}/todos".format(employee_id)
+    employee_todo_url = "https://jsonplaceholder.typicode.com/users/{}/todos".format(employee_id)
     todos = requests.get(employee_todo_url).json()
     for task in todos:
         if task['completed'] == True:
