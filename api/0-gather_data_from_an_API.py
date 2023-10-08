@@ -13,24 +13,21 @@ def getTodoInfo(employee_id):
     returns info of the employee that corresponds to the
     parameter given 'employee_id'
     """
-    users_url = "https://jsonplaceholder.typicode.com/users"
-    todos_url = "https://jsonplaceholder.typicode.com/todos"
-    todos_count = 0
+    users_url = "https://jsonplaceholder.typicode.com/users/{}".format(employee_id)
+    todos_url = "https://jsonplaceholder.typicode.com/users/{}/todos".format(employee_id)
     todos_done = 0
 
     resp = requests.get(todos_url).json()
+    todos_count = len(resp)
     for i in resp:
-        if i['userId'] == id:
-            todos_count += 1
-        if (i['completed'] and i['userId'] == id):
+        if (i.get('completed')):
             todos_done += 1
 
     resp = requests.get(users_url).json()
 
-    name = None
-    for i in resp:
-        if i['id'] == id:
-            name = i['name']
+    name = resp.get('name')
+
+    print("Employee {} is done with tasks({}/{}):".format(name, todos_done, todos_count))        
     employee_todo_url = "https://jsonplaceholder.typicode.com/users/{}/todos".format(employee_id)
     todos = requests.get(employee_todo_url).json()
     for task in todos:
