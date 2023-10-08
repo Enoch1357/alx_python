@@ -30,10 +30,11 @@ def getTodoInfo(employee_id):
     for i in resp:
         if i['id'] == id:
             name = i['name']
-    todos = "https://jsonplaceholder.typicode.com/{}/todos".format(employee_id)
+    employee_todo_url = "https://jsonplaceholder.typicode.com/{}/todos".format(employee_id)
+    todos = requests.get(employee_todo_url).json()
     for task in todos:
-        if task.get('completed') == True:
-            print(f"\t {task.get('title')}")
+        if task['completed'] == True:
+            print("\t {}".format(task['title']))
 
 if len(sys.argv) != 2:
     print("Usage error: python <script> <employee-id>")
