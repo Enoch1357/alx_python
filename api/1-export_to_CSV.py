@@ -4,9 +4,9 @@ This script accesses data from an API 'REST API',
 for a given employee ID, then returns information
 about his/her todo list progress.
 """
+import csv
 import requests
 import sys
-import csv
 
 def getTodoInfo(employee_id):
     """
@@ -27,7 +27,6 @@ def getTodoInfo(employee_id):
     resp = requests.get(users_url).json()
     name = resp.get('name')
 
-    print("Employee {} is done with tasks({}/{}):".format(name, todos_done, todos_count))        
     employee_todo_url = "https://jsonplaceholder.typicode.com/users/{}/todos".format(employee_id)
     todos = requests.get(employee_todo_url).json()
 
@@ -35,8 +34,7 @@ def getTodoInfo(employee_id):
     csv_filename = "{}.csv".format(employee_id)
     with open(csv_filename, 'w', newline='') as csvfile:
         fieldnames = ["USER_ID", "USERNAME", "TASK_COMPLETED_STATUS", "TASK_TITLE"]
-        writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
-        writer.writeheader()
+        writer = csv.DictWriter(csvfile, fieldnames=fieldnames, quoting=csv.QUOTE_ALL)
 
         for task in todos:
             writer.writerow({
