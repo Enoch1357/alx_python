@@ -26,7 +26,7 @@ def getTodoInfo(employee_id):
             total_tasks += 1
         if (i['completed'] and i['userId'] == employee_id):
             completed_tasks += 1
-    print(f"Employee {employee_data.get('name')} is done with tasks({completed_tasks}/{tasks}):")
+    print("Employee {} is done with tasks({}/{}):".format(employee_data.get('name'), completed_tasks, tasks))
     for task in tasks:
         if task.get('completed') == True:
             print(f"\t {task.get('title')}")
